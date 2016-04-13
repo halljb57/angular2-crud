@@ -1,0 +1,32 @@
+<div class="row">
+    <h5 class="text-center text-muted">Course List</h5>
+    <hr>
+    <div class="pull-right" style="margin-bottom: 10px;">
+        <button class="btn btn-md btn-success" [routerLink]="['CourseCreate']">
+            Add new course
+        </button>
+    </div>
+</div>
+<div class="row">
+    <div class="list-group" *ngFor="#course of courses | async">
+        <a href="#" class="list-group-item clearfix">
+            <span class="glyphicon glyphicon-file"></span>
+            Author: {{ course.author }}, Name: {{ course.name }}, Price: {{ course.price }}
+            <span class="pull-right">
+
+                <button class="btn btn-md btn-success" [routerLink]="['CourseDetail', {id:course.id}]">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+
+                <button class="btn btn-md btn-info" [routerLink]="['CourseEdit', {id:course.id}]">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+
+                <button href="#remove-course" data-toggle="modal" class="btn btn-md btn-danger" (click)="selectedCourse = course">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </button>
+          </span>
+        </a>
+    </div>
+    <course-remove [course]="selectedCourse"></course-remove>
+</div>

@@ -1,0 +1,29 @@
+<div *ngIf="errors">
+    <div class="alert alert-danger" *ngFor="#error of errors">
+        {{ error }}
+    </div>
+</div>
+
+<h5 class="text-center text-muted" *ngIf="isUpdate">Editar el curso {{ course.name }}</h5>
+<form role="form">
+    <div class="form-group">
+        <label class="sr-only" for="author">Author</label>
+        <input type="text" id="author" class="form-control" [(ngModel)]="course.author" placeholder="Author">
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="name">Name</label>
+        <input type="text" id="name" class="form-control" [(ngModel)]="course.name" placeholder="Name">
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="description">Description</label>
+        <input type="text" id="description" class="form-control" [(ngModel)]="course.description" placeholder="Description">
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="price">Price</label>
+        <input type="text" id="price" class="form-control" [(ngModel)]="course.price" placeholder="Price">
+    </div>
+    <div class="form-group">
+        <input type="button" (click)="processCourse(course)" class="btn btn-success" [value]="action">
+        <a class="btn btn-info" [routerLink]="['/Courses']" *ngIf="isUpdate">List Courses</a>
+    </div>
+</form>
